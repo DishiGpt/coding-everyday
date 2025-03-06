@@ -1,29 +1,22 @@
-// class calculator
-#include <iostream>
-using namespace std;
-class calculator{
-    public:
-    int n1;
-    int n2;
-    
-     void cal(int no1,int no2){
-        n1=no1;
-        n2=no2;
-    }
+#include <iostream> 
+using namespace std; 
+class Animal { 
+public: 
+void sound() { cout << "Animal makes a sound." << endl; } 
+}; 
+class Dog : public Animal { 
+public: 
+void bark() { cout << "Dog barks." << endl; } 
+}; 
+class Puppy : public Dog { 
+public: 
+void cuteAction() { cout << "Puppy wags its tail." << endl; } 
+}; 
 
-    void add_print(){
-        cout<<"sum of numbers :"<<n1+n2;
-    }
-};
-int main() {
-    calculator c1;
-    int num1,num2;
-    cout <<"enter 2 numbers :"<<endl;
-    cout<<"number 1 ";
-    cin>>num1;
-    cout<<"number 2 ";
-    cin>>num2;
-    c1.cal(num1,num2);
-    c1.add_print();
-    return 0;
-} 
+int main() { 
+    Puppy p; 
+p.sound(); 
+p.bark(); 
+p.cuteAction(); 
+return 0; 
+}
