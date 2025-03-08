@@ -1,32 +1,17 @@
-#include<iostream>
-using namespace std;
-class rectangle{
-    public :
-    int l;
-    int b,area;
+#include <iostream> 
+using namespace std; 
+class Device { 
+public: 
+void specs() { cout << "General device specifications." << endl; } 
+}; 
 
-    void set(int s1, int s2)
-    {
-        l=s1;
-        b=s2;
-        area=l*b;
+class Smartphone : virtual public Device {}; 
+class Tablet : virtual public Device {}; 
+class Hybrid : public Smartphone, public Tablet {}; 
 
-    }
-    void display()
-    {
-        cout<<"the area of the rectangle is : "<<area;
-    }
-};
-
-int main()
-{
-    rectangle rec1;
-    int len,br;
-    cout<<"enter the length ";
-    cin>>len;
-    cout<<"enter breadth ";
-    cin>>br;
-    rec1.set(len,br);    
-    rec1.display();
-    return 0;
+int main() 
+{ 
+    Hybrid h; 
+    h.specs(); // No ambiguity due to virtual inheritance 
+    return 0; 
 }
