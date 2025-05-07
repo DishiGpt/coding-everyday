@@ -1,0 +1,35 @@
+class Solution {
+public:
+    string sortSentence(string s) {
+        string result;
+        string s1;
+        vector<pair<string, int>> temp;
+        
+        for(int i = 0; i < s.size(); i++) {
+            if(s[i] != ' ') {
+                if(s[i] >= '0' && s[i] <= '9') {
+                    int num = s[i] - '0';
+                    temp.push_back(make_pair(s1, num));
+                    s1.clear();
+                }
+                else {
+                    s1 += s[i];
+                }
+            }
+        }
+        
+        sort(temp.begin(), temp.end(), [](const pair<string, int> &a, const pair<string, int> &b) {
+            return a.second < b.second;
+        });
+        
+        for (const auto& p : temp) {
+            result += p.first;
+            if (p.second != temp.back().second) {
+                result += ' ';
+            }
+        }
+        
+        return result;
+
+    }
+};
