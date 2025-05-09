@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int countBalancedPermutations(string num) {
+        const int MOD = 1e9 + 7; 
+
+        sort(num.begin(), num.end()); 
+
+        unordered_set<string> seen; 
+        int count = 0;
+
+        do {
+            if (seen.find(num) != seen.end()) continue;
+            seen.insert(num);
+
+            long long sume = 0, sumo = 0;
+            for (int i = 0; i < num.size(); ++i) {
+                if (i % 2 == 0)
+                    sume += num[i] - '0';
+                else
+                    sumo += num[i] - '0';
+            }
+
+            if (sume == sumo)
+                count = (count + 1) % MOD;
+
+        } while (next_permutation(num.begin(), num.end()));
+
+        return count;
+    }
+};
