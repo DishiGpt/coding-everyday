@@ -1,0 +1,17 @@
+class Solution {
+public:
+    string maximumOddBinaryNumber(string s) {
+        int c=count(s.begin(),s.end(),'1');
+        int n=s.size();
+        string s1;
+        if(c==1){
+            s1=string(n-1,'0');
+            s1+='1';
+            return s1;
+        }
+        s1=string(c-1,'1');
+        s1+=string(n-c,'0');
+        s1+='1';
+        return s1;
+    }
+};
