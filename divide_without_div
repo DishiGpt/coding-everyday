@@ -1,0 +1,26 @@
+int count=0; if(dividend==0)return 0;
+        if(divisor>0){
+            if(dividend>0)
+            {while(dividend>=divisor){
+                dividend-=divisor;
+                count++;
+            }}
+            else{
+                while(abs(dividend)>=divisor){
+                    dividend+=divisor;
+                    count++;
+                }
+            }
+        }
+        else{
+            if(dividend>0)
+             {while(dividend>=abs(divisor)){
+                dividend+=divisor;
+                count--;}}
+            else{
+                while(abs(dividend)>=abs(divisor)){
+                dividend-=divisor;
+                count++;
+            }
+        }
+        return count;
