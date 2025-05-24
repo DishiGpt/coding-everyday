@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int mostWordsFound(vector<string>& sentences) {
+        if(sentences.size()==0){
+            return 0;
+        }
+        int result=0;
+        for(auto sentence:sentences){
+            istringstream iss(sentence);
+            string word;
+            int wordCount = 0;
+            while (iss >> word){
+                wordCount++;
+            }
+            result=max(wordCount,result);
+        }
+        return result;
+    }
+};
