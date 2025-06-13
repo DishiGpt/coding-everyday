@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        sort(ransomNote.begin(),ransomNote.end());
+        sort(magazine.begin(),magazine.end());
+        if(ransomNote.size()>magazine.size())return false;
+        for(int i=0;i<ransomNote.size();i++){
+            auto it=find(magazine.begin(),magazine.end(),ransomNote[i]);
+            if(it==magazine.end())return false;
+            magazine.erase(it);
+        }
+        return true;
+    }
+};
