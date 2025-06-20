@@ -1,0 +1,12 @@
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        auto t_it = t.begin();  // Iterator to track position in t
+    for (auto s_it = s.begin(); s_it != s.end(); ++s_it) {
+        t_it = find(t_it, t.end(), *s_it);  // Start from current t_it
+        if (t_it == t.end()) return false;  // Not found
+        ++t_it;  // Move to next character in t
+    }
+    return true;
+    }
+};
