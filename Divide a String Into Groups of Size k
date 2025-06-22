@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<string> divideString(string s, int k, char fill) {
+        vector<string> result;
+        while(s.size()>=k){
+            string sub = s.substr(0, k);
+            result.push_back(sub);
+            s = s.substr(k);
+        }
+        if (!s.empty()) {
+            while (s.size() < k) {
+                s += fill;
+            }
+            result.push_back(s);
+        }
+        return result;
+    }
+};
