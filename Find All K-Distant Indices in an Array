@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> findKDistantIndices(vector<int>& nums, int key, int k) {
+        set<int>index;vector<int>hold;
+        for (int i = 0; i < nums.size(); ++i) {
+        if (nums[i] == key) {
+            hold.push_back(i);
+        }}
+        for(int i=0;i<nums.size();i++){
+            for(int j=0;j<hold.size();j++){
+                if(abs(i-hold[j])<=k) index.insert(i);
+            }
+        }
+        return vector<int>(index.begin(),index.end());
+    }
+};
