@@ -1,0 +1,10 @@
+class Solution {
+public:
+    double nthPersonGetsNthSeat(int n) {
+        if(n==1 ||n==2){
+            double num=n;
+            return 1/num; 
+        }
+        return 1/2.0; 
+    }
+};
