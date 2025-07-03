@@ -1,0 +1,14 @@
+class Solution {
+public:
+    char kthCharacter(int k) {
+        string res;res+='a';
+        while(res.length()<k){
+            string temp;
+            for(auto ch :res){
+                temp+=ch+1;
+            }
+            res+=temp;
+        }
+        return res[k-1];
+    }
+};
