@@ -1,0 +1,37 @@
+class FindSumPairs {
+    vector<int>n1,n2; unordered_map<int, int> freq2;
+public:
+    FindSumPairs(vector<int>& nums1, vector<int>& nums2) {
+        n1=nums1;
+        n2=nums2;
+        for (int val : n2) {
+            freq2[val]++;
+        }
+    }
+    
+    void add(int index, int val) {
+        int old_val = n2[index];
+        freq2[old_val]--;            
+        n2[index] += val;            
+        freq2[n2[index]]++; 
+    }
+    
+    int count(int tot) {
+        int count = 0;
+        for (int num : n1) {
+            int complement = tot - num;
+            if (freq2.count(complement)) {
+                count += freq2[complement];
+            }
+        }
+        return count;
+        
+    }
+};
+
+/**
+ * Your FindSumPairs object will be instantiated and called as such:
+ * FindSumPairs* obj = new FindSumPairs(nums1, nums2);
+ * obj->add(index,val);
+ * int param_2 = obj->count(tot);
+ */
