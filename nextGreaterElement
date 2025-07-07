@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        vector<int>result(nums1.size(),-1);
+        for(int i=0;i<nums1.size();i++){
+            auto it=find(nums2.begin(),nums2.end(),nums1[i]);
+            if(it!=nums2.end()){
+                while(it!=nums2.end())
+                {
+                    if(*(it)>nums1[i]){
+                    result[i]=*it;
+                    break;
+                    }
+                    ++it;
+                } 
+            }
+        }
+        return result;
+    }
+};
