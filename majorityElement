@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& nums) {
+        int count=nums.size()/3;
+        map<int,int>freq;
+        for(auto n:nums){
+            freq[n]++;
+        }
+        vector<int>result;
+        for(auto &pair:freq){
+            if(pair.second>count)result.push_back(pair.first);
+        }
+        return result;
+    }
+};
