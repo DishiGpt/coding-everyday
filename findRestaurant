@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<string> findRestaurant(vector<string>& list1, vector<string>& list2) {
+        vector<string> result;multimap<int,string>temp;
+        for(int i=0;i<list1.size();i++){
+            auto it=find(list2.begin(),list2.end(),list1[i]);
+            if(it!=list2.end()){
+                int index=distance(list2.begin(),it);
+                temp.insert({index+i,list1[i]});
+            }
+        }
+        int min=(temp.begin())->first;
+        for(auto ch:temp){
+            if(ch.first==min){
+                result.push_back(ch.second);
+            }
+        }
+        return result;
+    }
+};
