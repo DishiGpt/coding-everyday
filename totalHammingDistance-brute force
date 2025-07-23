@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int totalHammingDistance(vector<int>& nums) {
+        vector<pair<int, int>> pairs;int sum=0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = i + 1; j < nums.size(); j++) {
+                pairs.push_back({nums[i], nums[j]});
+            }
+        }
+        for(auto p:pairs){
+            int xor_result=p.first ^ p.second;
+            int count = 0;
+            while (xor_result) {
+            count += xor_result & 1;   
+            xor_result >>= 1;          
+            }
+            sum+=count;
+        } 
+        return sum;
+        
+    }
+};
