@@ -1,0 +1,23 @@
+class Solution(object):
+    def findErrorNums(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        n = len(nums)
+        S = sum(nums)
+        S_n = n * (n + 1) // 2
+
+        Sq = sum(x * x for x in nums)
+        Sq_n = n * (n + 1) * (2 * n + 1) // 6
+
+        diff = S_n - S           # x - y
+        sq_diff = Sq_n - Sq      # x^2 - y^2 = (x - y)(x + y)
+
+        sum_xy = sq_diff // diff  # x + y
+
+        x = (diff + sum_xy) // 2   # missing number
+        y = x - diff               # duplicate number
+
+        return [y, x]  
+        
