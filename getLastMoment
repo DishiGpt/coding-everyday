@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int getLastMoment(int n, vector<int>& left, vector<int>& right) {
+        int maxLeft = 0;
+    int maxRight = 0;
+
+    if (!left.empty())
+        maxLeft = *max_element(left.begin(), left.end());
+
+    if (!right.empty()) {
+        
+        maxRight = n - *min_element(right.begin(), right.end());
+    }
+
+    return max(maxLeft, maxRight);
+    }
+};
