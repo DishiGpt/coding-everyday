@@ -1,0 +1,12 @@
+class Solution {
+public:
+    bool isSameAfterReversals(int num) {
+        int count=0;
+        while(num%10==0&&num!=0){
+            count++;
+            num/=10;
+        }
+        if(count>0)return false;
+        return true;
+    }
+};
