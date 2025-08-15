@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int arraySign(vector<int>& nums) {
+        int c1=0;
+        for(auto ch:nums){
+            if(ch==0)return 0;
+            else if(ch<0)c1++;
+        }
+        if(c1%2==0)return 1;
+        return -1;
+    }
+};
