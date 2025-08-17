@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int numberOfEmployeesWhoMetTarget(vector<int>& hours, int target) {
+        int total=0;
+        for(auto ch:hours){
+            if(ch>=target){
+                total++;
+            }
+        }
+        return total;
+    }
+};
