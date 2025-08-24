@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxFreqSum(string s) {
+        map<char,int>freq;
+        for(auto ch:s){
+            freq[ch]++;
+        }
+        int max_v=0,max_c=0;
+        for(auto pair:freq){
+            if(pair.first=='a'||pair.first=='e'||pair.first=='i'||pair.first=='o'||pair.first=='u'){
+                max_v=max(max_v,pair.second);
+            }
+            else{
+                 max_c=max(max_c,pair.second);
+            }
+        }
+        return max_v+max_c;
+
+    }
+};
