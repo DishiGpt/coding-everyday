@@ -1,0 +1,30 @@
+class MyHashSet {
+    unordered_map<int,int>nums;
+public:
+    MyHashSet() {
+        
+    }
+    
+    void add(int key) {
+        nums[key]++;
+    }
+    
+    void remove(int key) {
+        if(nums.find(key)!=nums.end()){
+            nums.erase(key);
+        }
+    }
+    
+    bool contains(int key) {
+       return nums.find(key)!=nums.end();
+        
+    }
+};
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet* obj = new MyHashSet();
+ * obj->add(key);
+ * obj->remove(key);
+ * bool param_3 = obj->contains(key);
+ */
