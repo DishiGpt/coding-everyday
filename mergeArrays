@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<vector<int>> mergeArrays(vector<vector<int>>& nums1, vector<vector<int>>& nums2) {
+        map<int,int>freq;
+        for(int i=0;i<nums1.size();i++){
+            freq[nums1[i][0]]=nums1[i][1];
+        }
+        for(int i=0;i<nums2.size();i++){
+            if(freq.find(nums2[i][0])!=freq.end())
+            {freq[nums2[i][0]]+=nums2[i][1];}
+            else
+            {freq[nums2[i][0]]=nums2[i][1];}
+        }
+        vector<vector<int>>res;
+        for(auto pair:freq){
+            vector<int>n;
+            n.push_back(pair.first);
+            n.push_back(pair.second);
+            res.push_back(n);
+        }
+        return res;
+    }
+};
