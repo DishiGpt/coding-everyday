@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int distributeCandies(vector<int>& candyType) {
+        int n=candyType.size();
+        map<int,int>freq;
+        for(auto ch:candyType){
+            freq[ch]++;
+        }
+        int candy=freq.size();
+        n/=2;
+        if(candy>=n)return n;
+        return candy;
+    }
+};
