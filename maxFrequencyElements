@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxFrequencyElements(vector<int>& nums) {
+        map<int,int>freq;
+        for(auto ch:nums){
+            freq[ch]++;
+        }
+        int maxfreq=INT_MIN;
+        for(auto pair:freq){
+            maxfreq=max(maxfreq,pair.second);
+        }
+        int total=0;
+        for(auto pair:freq){
+            if(pair.second==maxfreq){
+                total+=maxfreq;
+            }
+        }
+        return total;
+    }
+};
