@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int repeatedNTimes(vector<int>& nums) {
+        map<int,int>freq;
+        for(auto ch:nums){
+            freq[ch]++;
+        }
+        int n=nums.size()/2,res;
+        for(auto ch:freq){
+            if(ch.second==n){
+                res= ch.first;
+                break;
+            }
+        }
+        return res;
+    }
+};
