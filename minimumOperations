@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int minimumOperations(vector<int>& nums) {
+        bool flag=true;int total=0,n=nums.size();
+        while(flag)
+        {
+            int minval=INT_MAX;
+            for(int i=0;i<n;i++){
+                if(nums[i]!=0){minval=min(nums[i],minval);}
+            }
+            if(minval==INT_MAX){flag=false;break;
+            }
+            else{
+                total++;
+                for(int i=0;i<n;i++){
+                    if(nums[i]!=0){
+                        nums[i]=nums[i]-minval;
+                    }
+                }
+            }
+        }
+        return total;
+    }
+};
