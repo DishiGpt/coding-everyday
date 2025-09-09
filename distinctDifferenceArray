@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> distinctDifferenceArray(vector<int>& nums) {
+        vector<int>res(nums.size());
+        for(int i=0;i<nums.size();i++){
+            map<int,int>left,right;
+            for(int j=0;j<=i;j++){
+                left[nums[j]]++;
+            }
+            for(int j=i+1;j<nums.size();j++){
+                right[nums[j]]++;
+            }
+            int tbi=0;
+            for(auto ch:left){
+                tbi++;
+            }
+            for(auto ch:right){
+                tbi--;
+            }
+            res[i]=tbi;
+        }
+        return res;
+    }
+};
