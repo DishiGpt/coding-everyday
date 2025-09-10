@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<string> uncommonFromSentences(string s1, string s2) {
+        map<string,int>freq;
+        stringstream ss(s1);string word;
+        while(ss>>word){
+            freq[word]++;
+        }
+        stringstream s(s2);
+        while(s>>word){
+            freq[word]++;
+        }
+        vector<string>res;
+        for(auto pair:freq){
+            if(pair.second==1){
+                res.push_back(pair.first);
+            }
+        }
+        return res;
+
+    }
+};
