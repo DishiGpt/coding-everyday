@@ -1,0 +1,30 @@
+class Solution {
+public:
+    string shortestCompletingWord(string licensePlate, vector<string>& words) {
+        map<char,int>freq;
+        transform(licensePlate.begin(), licensePlate.end(), licensePlate.begin(), ::tolower);
+        for(auto ch:licensePlate){
+            if(ch>=97&&ch<=122){
+                freq[ch]++;
+            }
+        }
+        string res(1e6, 'z');
+        for(auto word:words){
+            map<char,int>freq1;bool flag=true;
+            for(auto ch:word){
+                freq1[ch]++;
+            }
+            for(auto pair:freq){
+                if(freq1[pair.first]<pair.second){
+                    flag=false;break;
+                }
+            }
+            if(flag){
+                if(word.length()<res.length()){
+                    res=word;
+                }
+            }
+        }
+        return res;
+    }
+};
