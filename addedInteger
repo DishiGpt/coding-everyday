@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int addedInteger(vector<int>& nums1, vector<int>& nums2) {
+        sort(nums1.begin(),nums1.end());
+        sort(nums2.begin(),nums2.end());
+        auto it1=nums1.begin();
+        auto it2=nums2.begin();
+        return *it2-*it1;
+
+    }
+};
