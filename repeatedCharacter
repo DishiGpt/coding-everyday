@@ -1,0 +1,14 @@
+class Solution {
+public:
+    char repeatedCharacter(string s) {
+        map<char,int>freq;char ans;
+        for(auto ch:s){
+            freq[ch]++;
+            if(freq[ch]==2){
+                ans=ch;
+                break;
+            }
+        }
+        return ans;
+    }
+};
