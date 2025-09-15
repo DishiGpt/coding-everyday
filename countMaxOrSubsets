@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int countMaxOrSubsets(vector<int>& nums) {
+        int result=INT_MIN;
+        int s=nums.size();
+        int total=1<<s;
+        map<int,int>freq;
+        for(int mask=1;mask<total;mask++){
+            int xor_res = 0;
+            for(int i=0;i<s;i++){
+                if(mask&(1<<i)){
+                    xor_res |=nums[i];
+                }
+            }
+            result=max(result,xor_res);
+            freq[mask]=xor_res;
+        }
+        int res=0;
+        for(auto pair:freq){
+            if(pair.second==result){
+                res++;
+            }
+        }
+        return res;
+    }
+};
