@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int countLargestGroup(int n) {
+        map<int,int>freq;
+        for(int i=1;i<=n;i++){
+            int temp=i,total=0;
+            while(temp>0){
+                total+=temp%10;
+                temp/=10;
+            }
+            freq[total]++;
+        }
+        int max_size=INT_MIN;
+        for(auto p:freq){
+            max_size=max(max_size,p.second);
+        }
+        int count=0;
+        for(auto p:freq){
+            if(p.second==max_size){
+                count++;
+            }
+        }
+        return count;
+    }
+};
