@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<int> separateDigits(vector<int>& nums) {
+        vector<int>res;
+        for(auto ch:nums){
+            int temp=ch;vector<int>v;
+            while(temp>0){
+                v.insert(v.begin(),temp%10);
+                temp/=10;
+            }
+            res.insert(res.end(),v.begin(),v.end());
+        }
+        return res;
+    }
+};
