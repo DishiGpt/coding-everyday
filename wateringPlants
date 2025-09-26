@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int wateringPlants(vector<int>& plants, int capacity) {
+        int total=0;int water=capacity;
+        for(int i=0;i<plants.size();i++){
+            if(plants[i]<=water){
+                total++;
+                water-=plants[i];
+            }
+            else{
+                total+=i;
+                water=capacity;
+                water-=plants[i];
+                total+=i+1;
+            }
+
+        }
+        return total;
+    }
+};
