@@ -1,0 +1,17 @@
+class Solution {
+public:
+    long long pickGifts(vector<int>& gifts, int k) {
+        long long res=0;
+        while(k>0){
+            auto it=max_element(gifts.begin(),gifts.end());
+            double temp=sqrt(*it);
+            *it=floor(temp);
+            k--;
+        }
+        for(auto ch:gifts){
+            res+=ch;
+        }
+        return res;
+    }
+
+};
