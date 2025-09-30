@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int deleteGreatestValue(vector<vector<int>>& grid) {
+        int total = 0;
+
+        // Keep looping until all rows are empty
+        while (!grid[0].empty()) {
+            int max_el = INT_MIN;
+
+            for (int i = 0; i < grid.size(); i++) {
+                auto it = max_element(grid[i].begin(), grid[i].end());
+                max_el = max(max_el, *it);
+                grid[i].erase(it);  
+            }
+
+            total += max_el;
+        }
+
+        return total;
+    }
+};
