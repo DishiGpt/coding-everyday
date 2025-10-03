@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> sortEvenOdd(vector<int>& nums) {
+        if(nums.size()<3)return nums;
+        vector<int>odd_half;
+        vector<int>even_half;
+        for(int i=0;i<nums.size();i+=2){
+            even_half.push_back(nums[i]);
+        }
+        sort(even_half.begin(),even_half.end());
+        for(int i=1;i<nums.size();i+=2){
+            odd_half.push_back(nums[i]);
+        }
+        sort(odd_half.begin(),odd_half.end(),greater<int>());
+         int e = 0, o = 0;
+        for(int i = 0; i < nums.size(); i++) {
+            if(i % 2 == 0) {
+                nums[i] = even_half[e++];
+            } else {
+                nums[i] = odd_half[o++];
+            }
+        }
+        return nums;
+    }
+};
