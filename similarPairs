@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int similarPairs(vector<string>& words) {
+        int total=0;
+        for(int i=0;i<words.size();i++){
+            map<char,int>freq1;
+            for(auto ch:words[i]){
+                freq1[ch]++;
+            }
+            for(int j=i+1;j<words.size();j++){
+                map<char,int>freq2;
+                for(auto ch:words[j]){
+                freq2[ch]++;
+                }
+                bool flag=true;
+                if(freq1.size()==freq2.size()){
+                    for(auto p:freq1){
+                        if(freq2.find(p.first)==freq2.end()){
+                            flag=false;
+                            break;
+                        }
+                    }
+                }
+                else{
+                    flag=false;
+                }
+                
+                if(flag){total++;}
+            }
+        }
+        return total;
+    }
+};
