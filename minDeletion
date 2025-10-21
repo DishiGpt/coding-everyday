@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int minDeletion(string s, int k) {
+        map<char,int>freq;
+        for(auto c:s){
+            freq[c]++;
+        }
+        int si=freq.size();
+        if(si<=k)return 0;
+        si-=k;
+        int var=0;
+        while(si>0){
+            int ret=INT_MAX;
+            char key;
+            for(auto p:freq){
+                if(p.second<ret){
+                    ret=p.second;
+                    key=p.first;
+                }
+            }
+            var+=ret;
+            freq.erase(key);
+            si--;
+        }
+        return var;
+    }
+};
