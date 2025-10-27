@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool checkRecord(string s) {
+        if(count(s.begin(),s.end(),'A')>1)return false;
+        if(s.size()<3)return true;
+        for(int i=0;i<s.size()-2;i++){
+            string temp;
+            temp+=s[i];
+            temp+=s[i+1];
+            temp+=s[i+2];
+            if(temp=="LLL")return false;
+        }
+        return true;
+    }
+};
