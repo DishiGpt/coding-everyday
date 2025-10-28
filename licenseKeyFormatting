@@ -1,0 +1,29 @@
+class Solution {
+public:
+    string licenseKeyFormatting(string s, int k) {
+        vector<char> keep;
+        for (char c : s) {
+            if (c != '-') {
+                
+                keep.push_back(toupper(c));
+            }
+        }
+
+        reverse(keep.begin(), keep.end());
+
+        string formatted;
+        int count = 0;
+
+        for (char c : keep) {
+            if (count == k) {
+                formatted.push_back('-');
+                count = 0;
+            }
+            formatted.push_back(c);
+            count++;
+        }
+
+        reverse(formatted.begin(), formatted.end());
+        return formatted;
+    }
+};
