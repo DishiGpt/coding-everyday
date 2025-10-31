@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool areAlmostEqual(string s1, string s2) {
+        if(s1==s2)return true;
+        int count=0;
+        map<char,int>t1,t2;
+        for(int i=0;i<s1.size();i++){
+            if(s1[i]!=s2[i]){
+                count++;
+                t1[s1[i]]++;
+                t2[s2[i]]++;
+            }
+        }
+        if(count!=0 && count!=2)return false;
+        return t1==t2;
+    }
+};
