@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int percentageLetter(string s, char letter) {
+        int n=s.size();
+        map<char,int>freq;
+        for(auto ch:s){
+            freq[ch]++;
+        }
+        for(auto p:freq){
+            if(p.first==letter){
+                return int(100.0*p.second/n);
+            }
+        }
+        return 0;
+    }
+};
