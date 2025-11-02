@@ -1,0 +1,42 @@
+class Solution {
+public:
+    bool checkTwoChessboards(string coordinate1, string coordinate2) {
+        vector<char>half1={'a','c','e','g'};
+        vector<char>half2={'b','d','f','h'};
+        char c1,c2;
+        if(find(half1.begin(),half1.end(),coordinate1[0])!=half1.end()){
+            if((coordinate1[1]-'0')%2!=0){
+                c1='b';
+            }
+            else{
+                c1='w';
+            }
+        }
+        else{
+            if((coordinate1[1]-'0')%2!=0){
+                c1='w';
+            }
+            else{
+                c1='b';
+            }
+        }
+
+        if(find(half1.begin(),half1.end(),coordinate2[0])!=half1.end()){
+            if((coordinate2[1]-'0')%2!=0){
+                c2='b';
+            }
+            else{
+                c2='w';
+            }
+        }
+        else{
+            if((coordinate2[1]-'0')%2!=0){
+                c2='w';
+            }
+            else{
+                c2='b';
+            }
+        }
+        return c1==c2;
+    }
+};
