@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int gcd(int a,int b){
+        if(b==0)return a;
+        else return gcd(b,a%b);
+    }
+    int gcdOfOddEvenSums(int n) {
+        int sumodd=0,sumeven=0;
+        for(int i=1;i<=2*n;i++){
+            if(i%2==0){
+                sumeven+=i;
+            }
+            else{
+                sumodd+=i;
+            }
+        }
+        return gcd(sumeven,sumodd);
+    }
+};
