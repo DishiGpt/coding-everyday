@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums) {
+        stack<int> st;
+        st.push(0);                    // Always start with 0
+        int ops = 0;
+
+        for (int x : nums) {
+            // Pop all larger heights — they ended here
+            while (!st.empty() && st.top() > x) {
+                st.pop();
+                ops++;                // Operation needed for this height
+            }
+            // If current height is new (higher), start a new segment
+            if (st.top() < x)
+                st.push(x);
+            // else if st.top() == x, do nothing
+        }
+
+        // Clean up remaining heights above 0
+        while (st.top() > 0) {
+            st.pop();
+            ops++;
+        }
+        return ops;
+    }
+};
