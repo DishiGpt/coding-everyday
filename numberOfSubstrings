@@ -1,0 +1,52 @@
+class Solution {
+public:
+    int numberOfSubstrings(string s) {
+        int n = s.size();
+        int B = sqrt(n) + 2;
+
+        vector<vector<int>> nextZeros(n);
+        vector<int> zeroPos;
+
+        for (int i = 0; i < n; i++)
+            if (s[i] == '0')
+                zeroPos.push_back(i);
+
+        int zPtr = 0;
+        for (int l = 0; l < n; l++) {
+            while (zPtr < zeroPos.size() && zeroPos[zPtr] < l)
+                zPtr++;
+            for (int k = 0; k < B && zPtr + k < zeroPos.size(); k++)
+                nextZeros[l].push_back(zeroPos[zPtr + k]);
+        }
+
+        long long ans = 0;
+
+        for (int l = 0; l < n; l++) {
+            auto &nz = nextZeros[l];
+
+            if (nz.empty()) {
+                ans += (n - l);
+                continue;
+            }
+
+            for (int i = 0; i < nz.size(); i++) {
+                int Z = i + 1;
+                if (Z > B) break;
+
+                int minLen = Z * Z + Z;
+                int rmin = max(nz[i], l + minLen - 1);
+
+                int rmax = (i + 1 < nz.size() ? nz[i + 1] - 1 : n - 1);
+
+                if (rmin <= rmax)
+                    ans += (rmax - rmin + 1);
+            }
+
+            if (s[l] == '1') {
+                int rmax = nz[0] - 1;
+                ans += (rmax - l + 1);
+            }
+        }
+        return ans;
+    }
+};
