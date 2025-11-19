@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int findFinalValue(vector<int>& nums, int original) {
+          unordered_set<int> s(nums.begin(), nums.end());
+
+        // Step 2: Keep doubling original as long as it exists in the set
+        while (s.count(original)) {
+            original *= 2;
+        }
+
+        // Step 3: Return the final value
+        return original;
+    }
+};
