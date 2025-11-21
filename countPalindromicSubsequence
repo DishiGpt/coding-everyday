@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int countPalindromicSubsequence(string s) {
+        int n = s.size();
+        vector<int> first(26, -1), last(26, -1);
+
+        // Step 1: record first and last occurrences of each character
+        for (int i = 0; i < n; i++) {
+            int c = s[i] - 'a';
+            if (first[c] == -1) first[c] = i;
+            last[c] = i;
+        }
+
+        int result = 0;
+
+        // Step 2: for each character 'a' to 'z'
+        for (int c = 0; c < 26; c++) {
+            if (first[c] != -1 && last[c] != -1 && first[c] < last[c]) {
+                unordered_set<char> middle;
+
+                // collect distinct chars between first and last
+                for (int i = first[c] + 1; i < last[c]; i++) {
+                    middle.insert(s[i]);
+                }
+
+                // number of different middle chars = number of distinct palindromes
+                result += middle.size();
+            }
+        }
+
+        return result;
+    }
+};
