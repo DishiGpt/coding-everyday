@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int maxSumDivThree(vector<int>& nums) {
+        int sum = 0;
+        vector<int> mod1, mod2;
+
+        // Step 1: compute total sum and collect mod groups
+        for (int num : nums) {
+            sum += num;
+            if (num % 3 == 1)
+                mod1.push_back(num);
+            else if (num % 3 == 2)
+                mod2.push_back(num);
+        }
+
+        // Step 2: if already divisible by 3
+        if (sum % 3 == 0) return sum;
+
+        // Sort to get smallest removals easily
+        sort(mod1.begin(), mod1.end());
+        sort(mod2.begin(), mod2.end());
+
+        int result = 0;
+
+        // Case 1: remainder is 1
+        if (sum % 3 == 1) {
+            int remove1 = mod1.size() > 0 ? mod1[0] : INT_MAX;
+            int remove2 = mod2.size() > 1 ? mod2[0] + mod2[1] : INT_MAX;
+            result = sum - min(remove1, remove2);
+        }
+        // Case 2: remainder is 2
+        else {
+            int remove1 = mod2.size() > 0 ? mod2[0] : INT_MAX;
+            int remove2 = mod1.size() > 1 ? mod1[0] + mod1[1] : INT_MAX;
+            result = sum - min(remove1, remove2);
+        }
+
+        return result < 0 ? 0 : result;
+    }
+};
