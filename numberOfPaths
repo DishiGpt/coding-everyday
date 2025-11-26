@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int numberOfPaths(vector<vector<int>>& grid, int k) {
+        const int MOD = 1e9 + 7;
+        int m = grid.size();
+        int n = grid[0].size();
+        // dp[j][mod]: number of paths to cell (i, j) with sum mod k == mod
+        vector<vector<int>> dp(n, vector<int>(k, 0));
+        // Initialize starting cell
+        dp[0][grid[0][0] % k] = 1;
+        
+        for (int i = 0; i < m; i++) {
+            // We need a temporary dp for current row
+            vector<vector<int>> new_dp(n, vector<int>(k, 0));
+            for (int j = 0; j < n; j++) {
+                for (int mod = 0; mod < k; mod++) {
+                    int new_mod = (mod + grid[i][j]) % k;
+                    // If coming from up
+                    if (i > 0)
+                        new_dp[j][new_mod] = (new_dp[j][new_mod] + dp[j][mod]) % MOD;
+                    // If coming from left
+                    if (j > 0)
+                        new_dp[j][new_mod] = (new_dp[j][new_mod] + new_dp[j-1][mod]) % MOD;
+                }
+                // For first cell in the row, just carry over initialization
+                if (i == 0 && j == 0) new_dp[0][grid[0][0] % k] = 1;
+            }
+            dp = new_dp;
+        }
+        return dp[n-1][0];
+    }
+};
