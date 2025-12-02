@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        vector<int>ans,even_half,odd_half;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]<0){
+                odd_half.push_back(nums[i]);
+            }
+            else{
+                even_half.push_back(nums[i]);
+            }
+        }
+        for(int i=0;i<nums.size()/2;i++){
+            ans.push_back(even_half[i]);
+            ans.push_back(odd_half[i]);
+        }
+        return ans;
+    }
+};
