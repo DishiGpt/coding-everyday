@@ -1,0 +1,22 @@
+class OrderedStream {
+public:
+    vector<string> arr;
+    int ptr;
+
+    OrderedStream(int n) {
+        arr.resize(n + 1); 
+        ptr = 1;             
+    }
+    
+    vector<string> insert(int idKey, string value) {
+        arr[idKey] = value;
+        vector<string> result;
+
+        while (ptr < arr.size() && !arr[ptr].empty()) {
+            result.push_back(arr[ptr]);
+            ptr++;
+        }
+        
+        return result;
+    }
+};
