@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string freqAlphabets(string s) {
+        string result = "";
+        int n = s.length();
+        
+        for (int i = 0; i < n; ) {
+            // Check for two-digit pattern with '#'
+            if (i + 2 < n && s[i+2] == '#') {
+                int num = (s[i] - '0') * 10 + (s[i+1] - '0');  // form 10-26
+                result += (char)('a' + num - 1);
+                i += 3;  // skip "xy#"
+            } 
+            else {
+                // Single digit
+                int num = s[i] - '0';
+                result += (char)('a' + num - 1);
+                i++;
+            }
+        }
+        
+        return result;
+    }
+};
