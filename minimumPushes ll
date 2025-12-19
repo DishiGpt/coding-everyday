@@ -1,0 +1,24 @@
+
+class Solution {
+public:
+    int minimumPushes(string word) {
+        map<char, int> freq;
+        for (char c : word) freq[c]++;
+
+        vector<pair<char, int>> v(freq.begin(), freq.end());
+
+        // Sort by frequency descending
+        sort(v.begin(), v.end(), [](auto a, auto b) {
+            return a.second > b.second;
+        });
+
+        int cost = 0;
+
+        for (int i = 0; i < v.size(); i++) {
+            int pushes = (i / 8) + 1;   // key insight
+            cost += pushes * v[i].second;
+        }
+
+        return cost;
+    }
+};
