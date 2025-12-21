@@ -1,0 +1,22 @@
+class Solution {
+public:
+    string toBase(long long x, int b) {
+        string digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        string res = "";
+
+        while (x > 0) {
+            res += digits[x % b];
+            x /= b;
+        }
+
+        reverse(res.begin(), res.end());
+        return res;
+    }
+
+    string concatHex36(int n) {
+        long long n2 = 1LL * n * n;
+        long long n3 = n2 * n;
+
+        return toBase(n2, 16) + toBase(n3, 36);
+    }
+};
