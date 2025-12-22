@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> diStringMatch(string s) {
+        int low = 0, high = s.size();
+        vector<int> res;
+
+        for (char c : s) {
+            if (c == 'I') {
+                res.push_back(low++);
+            } else {
+                res.push_back(high--);
+            }
+        }
+
+        // one number left
+        res.push_back(low);  
+
+        return res;
+    }
+};
