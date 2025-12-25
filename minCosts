@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> minCosts(vector<int>& cost) {
+        vector<int>res(cost.size());
+        res[0]=cost[0];
+        for(int i=1;i<cost.size();i++){
+            int mine=res[0];
+            for(int j=0;j<=i;j++){
+                mine=min(cost[j],mine);
+            }
+            res[i]=mine;
+        }
+        return res;
+
+    }
+};
