@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool isVowel(char p){
+        char c=tolower(p);
+        return c=='a'||c=='e'||c=='i'||c=='o'||c=='u';
+
+    }
+    bool doesAliceWin(string s) {
+        int count=0;
+        for(auto p:s){
+            if(isVowel(p)){
+                count++;
+            }
+        }
+        if(count==0){
+            return false;
+        }
+        return true;
+    }
+};
