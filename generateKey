@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int generateKey(int num1, int num2, int num3) {
+        int key = 0;
+        int pow = 1000;  // to extract digits from left to right
+
+        while (pow > 0) {
+            int d1 = (num1 / pow) % 10;
+            int d2 = (num2 / pow) % 10;
+            int d3 = (num3 / pow) % 10;
+
+            key = key * 10 + min({d1, d2, d3});
+            pow /= 10;
+        }
+        return key;
+    }
+};
