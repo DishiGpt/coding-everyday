@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int numberOfBeams(vector<string>& bank) {
+        int count=0;
+        map<int,int>freq;
+        for(int i=0;i<bank.size();i++){
+            for(int j=0;j<bank[i].size();j++){
+                if(bank[i][j]=='1'){
+                    freq[i]++;
+                }
+            }
+            
+        }
+        for(auto i = freq.begin(); i != freq.end(); i++){
+            if(i->second==0){continue;}
+            for(auto j = i; j != freq.end(); j++){
+                if(i->first!=j->first &&j->second!=0){
+                    count+=(i->second*j->second);
+                    break;
+                }
+            }
+            cout<<count;
+        }
+        return count;
+    }
+};
