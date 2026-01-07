@@ -1,0 +1,21 @@
+class Solution(object):
+    def countSubstrings(self, s):
+        n = len(s)
+        count = 0
+
+        for i in range(n):
+            # Odd-length palindromes
+            count += self.expand(s, i, i)
+
+            # Even-length palindromes
+            count += self.expand(s, i, i + 1)
+
+        return count
+
+    def expand(self, s, left, right):
+        cnt = 0
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            cnt += 1
+            left -= 1
+            right += 1
+        return cnt
