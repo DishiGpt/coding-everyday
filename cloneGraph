@@ -1,0 +1,34 @@
+class Solution {
+    map<Node*, Node*> visited;
+
+public:
+    Node* clone(Node* node) {
+        if (node == nullptr)
+            return nullptr;
+
+        // already cloned
+        if (visited.find(node) != visited.end()) {
+            return visited[node];
+        }
+
+        // create new node
+        Node* temp = new Node(node->val);
+
+        // mark as visited BEFORE cloning neighbors (important for cycles)
+        visited[node] = temp;
+
+        // clone neighbors
+        for (Node* neigh : node->neighbors) {
+            temp->neighbors.push_back(clone(neigh));
+        }
+
+        return temp;
+    }
+
+    Node* cloneGraph(Node* node) {
+        if (node == nullptr)
+            return nullptr;
+
+        return clone(node);
+    }
+};
