@@ -1,0 +1,30 @@
+class MedianFinder {
+    vector<int> val;
+
+public:
+    MedianFinder() {}
+
+    void addNum(int num) {
+        if (val.empty()) {
+            val.push_back(num);
+            return;
+        }
+
+        int i = 0;
+        while (i < val.size() && val[i] < num) {
+            i++;
+        }
+
+        // insert at correct position
+        val.insert(val.begin() + i, num);
+    }
+
+    double findMedian() {
+        int n = val.size();
+
+        if (n % 2 == 0) {
+            return (val[n/2 - 1] + val[n/2]) / 2.0;
+        }
+        return val[n/2];
+    }
+};
