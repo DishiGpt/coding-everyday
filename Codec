@@ -1,0 +1,50 @@
+class Codec {
+public:
+    // ---------- SERIALIZE ----------
+    void serializeHelper(TreeNode* root, string &res) {
+        if (!root) {
+            res += "null,";
+            return;
+        }
+        res += to_string(root->val) + ",";
+        serializeHelper(root->left, res);
+        serializeHelper(root->right, res);
+    }
+
+    string serialize(TreeNode* root) {
+        string res;
+        serializeHelper(root, res);
+        return res;
+    }
+
+    // ---------- DESERIALIZE ----------
+    TreeNode* deserializeHelper(queue<string> &q) {
+        string val = q.front();
+        q.pop();
+
+        if (val == "null") return nullptr;
+
+        TreeNode* node = new TreeNode(stoi(val));
+        node->left = deserializeHelper(q);
+        node->right = deserializeHelper(q);
+        return node;
+    }
+
+    TreeNode* deserialize(string data) {
+        if (data.empty()) return nullptr;
+
+        queue<string> q;
+        string temp;
+
+        for (char c : data) {
+            if (c == ',') {
+                q.push(temp);
+                temp.clear();
+            } else {
+                temp += c;
+            }
+        }
+
+        return deserializeHelper(q);
+    }
+};
