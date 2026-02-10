@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<vector<int>> removeDuplicateRows(vector<vector<int>>& arr) {
+    set<vector<int>> s;
+
+    for (auto &row : arr) {
+        s.insert(row);
+    }
+
+    return vector<vector<int>>(s.begin(), s.end());
+}
+    vector<int> findingUsersActiveMinutes(vector<vector<int>>& logs, int k) {
+        vector<int>res(k,0);
+        logs=removeDuplicateRows(logs);
+        map<int,int>freq;
+        for(int i=0;i<logs.size();i++){
+            freq[logs[i][0]]++;
+        }
+        for(auto p:freq){
+            res[p.second-1]++;
+        }
+        return res;
+    }
+};
