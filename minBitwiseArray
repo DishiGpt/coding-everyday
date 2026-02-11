@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> minBitwiseArray(vector<int>& nums) {
+        vector<int> ans;
+        ans.reserve(nums.size());
+        
+        for (int x : nums) {
+            if (x == 2) {
+                ans.push_back(-1);
+            } else {
+                
+                int p = 0;
+                while ((x >> p) & 1) {
+                    p++;
+                }
+                
+                ans.push_back(x ^ (1 << (p - 1)));
+            }
+        }
+        return ans;
+    }
+};
