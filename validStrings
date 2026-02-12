@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<string> ans;
+    
+    void backtrack(string &curr, int n) {
+        // Base case
+        if(curr.length() == n) {
+            ans.push_back(curr);
+            return;
+        }
+        
+        // Always try adding '1'
+        curr.push_back('1');
+        backtrack(curr, n);
+        curr.pop_back();  // undo choice
+        
+        // Try adding '0' only if last character is not '0'
+        if(curr.empty() || curr.back() != '0') {
+            curr.push_back('0');
+            backtrack(curr, n);
+            curr.pop_back();  // undo choice
+        }
+    }
+    
+    vector<string> validStrings(int n) {
+        string curr = "";
+        backtrack(curr, n);
+        return ans;
+    }
+};
