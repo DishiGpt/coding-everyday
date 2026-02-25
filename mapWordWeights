@@ -1,0 +1,16 @@
+class Solution {
+public:
+    string mapWordWeights(vector<string>& words, vector<int>& weights) {
+        string res;
+        for(int i=0;i<words.size();i++){
+            int weight=0;
+            for(int j=0;j<words[i].size();j++){
+                weight+=weights[words[i][j]-'a'];
+            }
+            weight=weight%26;
+            char c='z'-weight;
+            res+=c;
+        }
+        return res;
+    }
+};
