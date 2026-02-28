@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums, int k) {
+        int res=0;
+        for(auto p:nums){
+            res^=p;
+        }
+        if(res!=k){
+            int count=0;
+            int bigger=res>k?res:k;
+            int smaller=res<k?res:k;
+            while(bigger){
+                if(bigger%2!=smaller%2)count++;
+                bigger/=2;smaller/=2;
+            }
+            return count;
+        }
+        return 0;
+    }
+};
