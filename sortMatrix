@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<vector<int>> sortMatrix(vector<vector<int>>& grid) {
+        int n = grid.size();
+        
+        unordered_map<int, vector<int>> mp;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                mp[i - j].push_back(grid[i][j]);
+            }
+        }
+        for(auto &p : mp){
+            if(p.first >= 0){
+                sort(p.second.begin(), p.second.end(), greater<int>()); 
+            } else {
+                sort(p.second.begin(), p.second.end());
+            }
+        }
+        
+        unordered_map<int, int> index;
+        
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                int key = i - j;
+                grid[i][j] = mp[key][index[key]];
+                index[key]++;
+            }
+        }
+        
+        return grid;
+    }
+};
