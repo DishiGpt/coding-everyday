@@ -1,0 +1,24 @@
+class Solution {
+public:
+    char findKthBit(int n, int k) {
+        string s = "0";   // S1
+        
+        for(int count = 1; count < n; count++) {
+            string inv = s;
+            
+            // invert
+            for(char &c : inv) {
+                if(c == '0') c = '1';
+                else c = '0';
+            }
+            
+            // reverse
+            reverse(inv.begin(), inv.end());
+            
+            // build next string
+            s = s + "1" + inv;
+        }
+        
+        return s[k-1];  // 1-based indexing
+    }
+};
