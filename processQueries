@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<int> processQueries(vector<int>& queries, int m) {
+        int n=queries.size();
+        vector<int>pos;
+        vector<int>p(m);
+        for(int i=0;i<m;i++){
+            p[i]=i+1;
+        }
+        for(int i=0;i<n;i++){
+            int index=find(p.begin(),p.end(),queries[i])-p.begin();
+            p.erase(p.begin()+index);
+            p.insert(p.begin(),queries[i]);
+            pos.push_back(index);
+        }
+        return pos;
+    }
+};
