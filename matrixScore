@@ -1,0 +1,45 @@
+class Solution {
+public:
+    int matrixScore(vector<vector<int>>& grid) {
+        int n = grid.size();     // rows
+        int m = grid[0].size();  // columns
+
+        // Step 1: Make first column all 1s
+        for(int i = 0; i < n; i++){
+            if(grid[i][0] == 0){
+                for(int j = 0; j < m; j++){
+                    grid[i][j] ^= 1;  // flip (0->1, 1->0)
+                }
+            }
+        }
+
+        // Step 2: For each column, maximize 1s
+        for(int j = 0; j < m; j++){
+            int count1 = 0;
+
+            for(int i = 0; i < n; i++){
+                if(grid[i][j] == 1) count1++;
+            }
+
+            // if more 0s → flip column
+            if(count1 < n - count1){
+                for(int i = 0; i < n; i++){
+                    grid[i][j] ^= 1;
+                }
+            }
+        }
+
+        // Step 3: Calculate score
+        int total = 0;
+
+        for(int i = 0; i < n; i++){
+            int value = 0;
+            for(int j = 0; j < m; j++){
+                value = value * 2 + grid[i][j];
+            }
+            total += value;
+        }
+
+        return total;
+    }
+};
