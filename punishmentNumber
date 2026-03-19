@@ -1,0 +1,40 @@
+class Solution {
+public:
+    bool solve(string &s, int index, int target){
+        if(index == s.size()){
+            return target == 0;
+        }
+
+        int num = 0;
+
+        for(int j = index; j < s.size(); j++){
+            num = num * 10 + (s[j] - '0');
+
+            if(num > target) break;
+
+            if(solve(s, j + 1, target - num)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    int punishmentNumber(int n) {
+        int sum = 0;
+
+        for(int i = 1; i <= n; i++){
+            
+            if(i % 9 != 0 && i % 9 != 1) continue;
+
+            int sq = i * i;
+            string s = to_string(sq);
+
+            if(solve(s, 0, i)){
+                sum += sq;
+            }
+        }
+
+        return sum;
+    }
+};
