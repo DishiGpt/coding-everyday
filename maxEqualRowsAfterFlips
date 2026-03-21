@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int maxEqualRowsAfterFlips(vector<vector<int>>& matrix) {
+        map<string,int>freq;
+        int n=matrix.size();
+        int m=matrix[0].size();
+        for(int i=0;i<n;i++){
+            int j=0;
+            string pat;
+            if(matrix[i][j]==0){
+                for(j;j<m;j++){
+                    pat+=matrix[i][j]+'0';
+                }
+            }
+            else{
+                for(j;j<m;j++){
+                    pat+=(matrix[i][j]^1)+'0';
+                }
+            }
+            freq[pat]++;
+        }
+        int res=INT_MIN;
+        for(auto p:freq){
+            res=max(res,p.second);
+        }
+        return res;
+    }
+};
