@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string preorder(TreeNode* root){
+        if(!root) return "";
+
+        string result = to_string(root->val);
+
+        if(root->left){
+            result += "(" + preorder(root->left) + ")";
+        }
+
+        if(root->right){
+            if(!root->left){
+                result += "()";
+            }
+            result += "(" + preorder(root->right) + ")";
+        }
+
+        return result;
+    }
+
+    string tree2str(TreeNode* root) {
+        return preorder(root);
+    }
+};
