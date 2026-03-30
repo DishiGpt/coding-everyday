@@ -1,0 +1,10 @@
+class Solution {
+public:
+    int smallestRangeI(vector<int>& nums, int k) {
+        sort(nums.begin(),nums.end());
+        int new_max=nums.back()-k;
+        int new_min=nums.front()+k;
+        if(new_min>=new_max)return 0;
+        return new_max-new_min;
+    }
+};
