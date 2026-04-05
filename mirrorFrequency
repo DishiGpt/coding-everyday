@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int mirrorFrequency(string s) {
+        int total=0;
+        map<char,int>freq;
+        for(auto c:s){
+            freq[c]++;
+        }
+        
+        for(char c = 'a'; c <= 'z'; c++){
+            char mirror = 'z' - (c - 'a');
+            
+            if(c <= mirror){
+                total += abs(freq[c] - freq[mirror]);
+            }
+        }
+        for(char c = '0'; c <= '9'; c++){
+            char mirror = '9' - (c - '0');
+            
+            if(c <= mirror){
+                total += abs(freq[c] - freq[mirror]);
+            }
+        }
+        return total;
+    }
+};
