@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int compareBitonicSums(vector<int>& nums) {
+        long long  asc=0,desc=0;int n=nums.size();
+        int i=0;
+        while(i<n-1&&nums[i]<nums[i+1]){
+            asc+=nums[i];i++;
+        }
+        asc+=nums[i];
+        while(i<n){
+            desc+=nums[i];
+            i++;
+        }
+        if(asc>desc)return 0;
+        else if(desc>asc)return 1;
+        return -1;
+    }
+};
