@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int findLHS(vector<int>& nums) {
+        map<int,int>freq;
+        for(auto n:nums){
+            freq[n]++;
+        }
+        int len=0;
+        for (auto p : freq) {
+            if (freq.find(p.first + 1) != freq.end()) {
+                len = max(len, p.second + freq[p.first + 1]);
+            }
+        }
+        return len;
+    }
+};
