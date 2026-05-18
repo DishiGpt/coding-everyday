@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<bool> checkArithmeticSubarrays(vector<int>& nums, vector<int>& l, vector<int>& r) {
+        int s=l.size();
+        vector<bool>ans(s,true);
+        for(int i=0;i<s;i++){
+            vector<int>sub(nums.begin()+l[i],nums.begin()+r[i]+1);
+            sort(sub.begin(),sub.end());
+            int diff=sub[1]-sub[0];
+            for(int k=1;k<sub.size()-1;k++){
+                if(diff!=sub[k+1]-sub[k]){
+                    ans[i]=false;
+                    break;
+                }
+            }
+        }
+        return ans;
+    }
+};
