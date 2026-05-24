@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> limitOccurrences(vector<int>& nums, int k) {
+        map<int,int>freq;
+        for(auto n:nums){
+            freq[n]++;
+        }
+        vector<int>ans;
+        for(auto p:freq){
+            int temp=k;
+            while(p.second>0&&temp>0){
+                ans.push_back(p.first);
+                p.second--;
+                temp--;
+            }
+        }
+        return ans;
+    }
+};©leetcode
