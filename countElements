@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int countElements(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        int n=nums.size();
+        int count=0;
+        for(int i=1;i<n-1;i++){
+            bool min_true=false,max_true=false;
+            for(int j=i-1;j>=0;j--){
+                if(nums[j]<nums[i]){
+                    min_true=true;break;
+                }
+            }
+            for(int j=i+1;j<n;j++){
+                if(nums[i]<nums[j]){
+                    max_true=true;break;
+                }
+            }
+            if(min_true&&max_true){
+                count++;
+            }
+        }
+        return count;
+    }
+};
