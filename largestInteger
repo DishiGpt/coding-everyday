@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int largestInteger(int num) {
+        vector<int>even_digits;
+        vector<int>odd_digits;
+        int temp=num;
+        while(temp>0){
+            int rem=temp%10;
+            if(rem%2==0){
+                even_digits.push_back(rem);
+            }
+            else{
+                odd_digits.push_back(rem);
+            }
+            temp/=10;
+        }
+        sort(even_digits.begin(),even_digits.end());
+        sort(odd_digits.begin(),odd_digits.end());
+        int e=0,o=0;
+        temp=num;
+        
+        string s=to_string(num);
+        int i=s.size()-1;
+        while(temp>0){
+            if((temp%10)%2==0){
+                s[i--]=even_digits[e++]+'0';
+            }
+            else{
+                s[i--]=odd_digits[o++]+'0';
+            }
+            temp/=10;
+        }
+        return stoi(s);
+    }
+};
