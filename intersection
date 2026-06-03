@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> intersection(vector<vector<int>>& nums) {
+        map<int,int>freq;
+        vector<int>res;
+        int n=nums.size();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<nums[i].size();j++){
+                freq[nums[i][j]]++;
+            }
+        }
+        for(auto p:freq){
+            if(p.second==n){
+                res.push_back(p.first);
+            }
+        }
+        sort(res.begin(),res.end());
+        return res;
+    }
+};
