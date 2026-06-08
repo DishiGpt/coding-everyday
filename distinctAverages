@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int distinctAverages(vector<int>& nums) {
+        map<double,int>freq;
+        sort(nums.begin(),nums.end());
+        int beg=0,end=nums.size()-1;
+        while(beg<end){
+            double avg=(nums[beg]+nums[end])/2.0;
+            freq[avg]++;
+            beg++;
+            end--;
+        }
+        return freq.size();
+    }
+};
