@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> sortByReflection(vector<int>& nums) {
+        vector<pair<int,int>>mapped;
+        for(auto num:nums){
+            int reversed = 0;
+            int n=num;
+            while (n > 0) {
+            reversed = (reversed << 1) | (n & 1);
+            n >>= 1;
+            }
+            mapped.push_back({num,reversed});
+        }
+        sort(mapped.begin(), mapped.end(),
+             [](const pair<int,int>& a, const pair<int,int>& b) {
+                 if (a.second == b.second)
+                     return a.first < b.first;
+                 return a.second < b.second;
+             });
+        vector<int>ans;
+        for(auto n:mapped){
+            ans.push_back(n.first);
+        }
+        return ans;
+    }
+};
