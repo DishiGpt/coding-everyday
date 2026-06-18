@@ -1,0 +1,40 @@
+class Solution {
+public:
+    vector<vector<string>> displayTable(vector<vector<string>>& orders) {
+
+        set<string> foods;
+        map<int, map<string,int>> tables;
+
+        for(auto &o : orders) {
+            int table = stoi(o[1]);
+            string food = o[2];
+
+            foods.insert(food);
+            tables[table][food]++;
+        }
+
+        vector<vector<string>> ans;
+
+        vector<string> header;
+        header.push_back("Table");
+
+        for(auto &food : foods)
+            header.push_back(food);
+
+        ans.push_back(header);
+
+        for(auto &[tableNum, cnt] : tables) {
+
+            vector<string> row;
+            row.push_back(to_string(tableNum));
+
+            for(auto &food : foods) {
+                row.push_back(to_string(cnt[food]));
+            }
+
+            ans.push_back(row);
+        }
+
+        return ans;
+    }
+};
