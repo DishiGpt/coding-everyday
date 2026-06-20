@@ -1,0 +1,40 @@
+class Solution {
+public:
+    vector<long long> distance(vector<int>& nums) {
+        unordered_map<int,vector<int>>mp;
+        int n=nums.size();
+        for(int i=0;i<n;i++){
+            mp[nums[i]].push_back(i);
+        }
+        vector<long long>ans(n,0);
+        for (auto &p : mp) {
+    vector<int> &pos = p.second;
+    int m = pos.size();
+
+    vector<long long> prefix(m);
+    prefix[0] = pos[0];
+
+    for (int i = 1; i < m; i++)
+        prefix[i] = prefix[i - 1] + pos[i];
+
+    for (int i = 0; i < m; i++) {
+
+        long long leftSum =
+            (i == 0 ? 0 : prefix[i - 1]);
+
+        long long rightSum =
+            prefix[m - 1] - prefix[i];
+
+        long long left =
+            1LL * i * pos[i] - leftSum;
+
+        long long right =
+            rightSum -
+            1LL * (m - i - 1) * pos[i];
+
+        ans[pos[i]] = left + right;
+    }
+}
+        return ans;
+    }
+};
