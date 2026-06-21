@@ -1,71 +1,130 @@
-# coding-everyday
+📘 coding-everyday
+Daily C++ practice for steady growth
 
-A collection of daily C++ practice problems, algorithms, and small projects. This repository is intended as a place to experiment, learn, and build a consistent habit of solving problems in C++.
+A personal learning repository for solving problems, experimenting with algorithms, and building small C++ projects every day. It is designed to help maintain consistency, improve problem-solving speed, and create a clean archive of practice solutions.
 
-- Primary language: **C++ (100%)**
-- Recommended standard: **C++17/C++20**
+🚀 Overview
+coding-everyday is a daily C++ practice repository focused on:
 
-## Table of contents
+Tracking progress through regular problem solving.
 
-- [About](#about)
-- [Repository structure](#repository-structure)
-- [Getting started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Build & run (single file)](#build--run-single-file)
-  - [Build & run (CMake project)](#build--run-cmake-project)
-- [File / naming conventions](#file--naming-conventions)
-- [Testing and examples](#testing-and-examples)
-- [Code style & tooling](#code-style--tooling)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+Keeping solutions short, focused, and easy to review.
 
-## About
+Practicing algorithms, data structures, and small utilities.
 
-"coding-everyday" is a personal/learning repository for daily C++ practice. It contains problem solutions, small utilities, and algorithm implementations. Use it to:
+Building a long-term habit of writing C++ consistently.
 
-- Track your progress solving problems daily.
-- Keep short, focused implementations and example usages.
-- Share and review solutions with others.
+It is intended as both a practice log and a learning workspace.
 
-## Repository structure
+📌 Features
+Practice and Learning
+🧠 Daily C++ problem solving.
 
-A suggested layout — actual contents may vary:
+📂 Organized solutions for easy revision.
 
-- / (root)
-  - README.md
-  - LICENSE
-  - /problems
-    - /yyyy-mm-dd-problem-name
-      - solution.cpp
-      - README.md (problem statement, approach, complexity)
-      - input.txt (optional sample input)
-  - /algorithms
-    - graph/
-    - dp/
-    - strings/
-  - /templates
-    - cpp_template.hpp
-  - /tools
-    - small test harnesses, scripts
-  - CMakeLists.txt (optional)
+✍️ Short, readable implementations.
 
-## Getting started
+🔍 Example usage and sample input/output where needed.
 
-### Prerequisites
+Repository Goals
+📈 Track improvement over time.
 
-- A C++ compiler that supports C++17/C++20 (g++, clang++)
-- Optional: CMake (>=3.10) for multi-file projects
-- Optional: clang-format for consistent formatting
-- Unix-like shell (Linux, macOS, WSL) or Windows with suitable toolchain
+🛠️ Experiment with algorithms and utilities.
 
-### Build & run (single file)
+🤝 Share and review solutions easily.
 
+🔁 Revisit old problems for optimization and cleanup.
+
+🛠️ Tech Stack
+Language: C++100%
+
+Recommended Standard: C++17 / C++20
+
+Build System: CMake (optional)
+
+Formatting Tool: clang-format (optional)
+
+Compiler Support: g++, clang++
+
+📁 Repository Structure
+bash
+/
+├── README.md
+├── LICENSE
+├── problems/
+│   └── yyyy-mm-dd-problem-name/
+│       ├── solution.cpp
+│       ├── README.md
+│       └── input.txt
+├── algorithms/
+│   ├── graph/
+│   ├── dp/
+│   └── strings/
+├── templates/
+│   └── cpp_template.hpp
+├── tools/
+│   └── small test harnesses, scripts
+└── CMakeLists.txt
+⚙️ Getting Started
+Prerequisites
+A C++ compiler supporting C++17/C++20 such as g++ or clang++.
+
+Optional: CMake 3.10+ for multi-file projects.
+
+Optional: clang-format for consistent formatting.
+
+A Unix-like shell, or Windows with a compatible toolchain.
+
+▶️ Build and Run
+Single File
 Compile a single solution file with g++:
 
-```bash
-# compile
+bash
 g++ -std=c++20 -O2 -Wall -Wextra problems/2025-01-01-example/solution.cpp -o bin/example
+Run it with sample input:
 
-# run
+bash
 ./bin/example < problems/2025-01-01-example/input.txt
+CMake Project
+If the project is set up with CMake:
+
+bash
+cmake -S . -B build
+cmake --build build
+./build/example
+🧾 File and Naming Conventions
+Use date-based folders for daily problems, such as yyyy-mm-dd-problem-name.
+
+Keep the main solution file named solution.cpp.
+
+Add a local README.md for problem statement, approach, and complexity if needed.
+
+Store sample input in input.txt when useful.
+
+🧪 Testing and Examples
+Include sample input files for quick verification.
+
+Keep solutions self-contained when possible.
+
+Add small test harnesses under tools/ for reusable checks.
+
+Re-run older solutions occasionally to validate correctness and readability.
+
+🎨 Code Style and Tooling
+Prefer clean, consistent formatting.
+
+Use clang-format to keep style uniform.
+
+Follow modern C++ practices where appropriate.
+
+Keep implementations readable and easy to revisit later.
+
+📝 License
+This project is licensed under the MIT License.
+
+📧 Contact
+For questions, feedback, or collaboration:
+
+GitHub: DishiGpt
+
+This repository is maintained as a personal learning space for daily C++ practice, algorithm revision, and consistent problem solving.
