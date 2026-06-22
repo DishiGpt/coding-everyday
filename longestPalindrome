@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        unordered_map<char,int>freq;
+        for(auto c:s){
+            freq[c]++;
+        }
+        bool hasOdd = false;
+        int length=0;
+        for(auto p : freq) {
+            length += (p.second / 2) * 2;  
+
+            if(p.second % 2)
+                hasOdd = true;
+        }
+
+        return hasOdd ? length + 1 : length;
+    }
+};
