@@ -1,0 +1,9 @@
+class Solution {
+public:
+    vector<int> concatWithReverse(vector<int>& nums) {
+        vector<int>copy=nums;
+        reverse(copy.begin(),copy.end());
+        nums.insert(nums.end(),copy.begin(),copy.end());
+        return nums;
+    }
+};
