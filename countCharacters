@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int countCharacters(vector<string>& words, string chars) {
+        int ans = 0;
+
+        map<char, int> freq;
+
+        // Frequency of chars
+        for (char c : chars)
+            freq[c]++;
+
+        // Check every word
+        for (string word : words) {
+
+            map<char, int> temp;
+
+            for (char c : word)
+                temp[c]++;
+
+            bool good = true;
+
+            for (auto it : temp) {
+                if (it.second > freq[it.first]) {
+                    good = false;
+                    break;
+                }
+            }
+
+            if (good)
+                ans += word.length();
+        }
+
+        return ans;
+    }
+};
