@@ -1,0 +1,35 @@
+class Solution {
+public:
+    bool validPalindrome(string s) {
+        int n=s.size();
+        int left=0,right=n-1;
+        while(left<right){
+            if(s[left]==s[right]){
+                left++;right--;
+            }
+            else{
+                int in_left=left+1,in_right=right;
+                bool flag1=true,flag2=true;
+                while(in_left<in_right){
+                    if(s[in_left]!=s[in_right]){
+                        flag1=false;
+                        break;
+                    }
+                    in_left++;
+                    in_right--;
+                }
+                in_left=left,in_right=right-1;
+                while(in_left<in_right){
+                    if(s[in_left]!=s[in_right]){
+                        flag2=false;
+                        break;
+                    }
+                    in_left++;
+                    in_right--;
+                }
+                return (flag1||flag2);
+            }
+        }
+        return true;
+    }
+};
