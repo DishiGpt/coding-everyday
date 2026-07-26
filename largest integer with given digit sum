@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int largestInteger(int n, int s) {
+        if((9*n)< s)return -1;
+        if(s==0)return 0;
+        int result=0;
+        int remaining_sum=s;
+        while(n>0){
+            int digit=min(9,remaining_sum);
+            result=result*10+digit;
+            remaining_sum-=digit;
+            n--;
+        }
+        return result;
+    }
+};©leetcode
