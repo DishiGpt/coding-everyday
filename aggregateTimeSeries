@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<vector<int>> aggregateTimeSeries(vector<vector<int>>& series1, vector<vector<int>>& series2) {
+        map<int,int> map1, map2;
+        set<int> all_values;
+        
+        for (auto p : series1) {
+            map1[p[0]] = p[1];
+            all_values.insert(p[0]);
+        }
+        for (auto p : series2) {
+            map2[p[0]] = p[1];
+            all_values.insert(p[0]);
+        }
+        
+        int val1 = 0, val2 = 0;
+        vector<vector<int>> aggregate;
+        
+        for (auto it = all_values.rbegin(); it != all_values.rend(); ++it) {
+            int t = *it;
+            if (map1.find(t) != map1.end()) val1 = map1[t];
+            if (map2.find(t) != map2.end()) val2 = map2[t];
+            aggregate.insert(aggregate.begin(),{t, val1 + val2});
+        }
+        
+        return aggregate;
+    }
+};
