@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int minTimeToType(string word) {
+        int curr=0;
+        int cost=0;
+        for(auto w:word){
+            int next=w-'a';
+            int clockwise = (next - curr + 26) % 26;
+            int anticlockwise = (curr - next + 26) % 26;
+            curr=next;
+            cost+=min(clockwise,anticlockwise);
+        }
+        return cost+word.size();
+    }
+};
