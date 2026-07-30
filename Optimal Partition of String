@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int partitionString(string s) {
+        set<char> words;
+        int answer = 1;
+
+        for (char letter : s) {
+            if (words.find(letter) != words.end()) {
+                answer++;
+                words.clear();
+            }
+
+            words.insert(letter);
+        }
+
+        return answer;
+    }
+};
