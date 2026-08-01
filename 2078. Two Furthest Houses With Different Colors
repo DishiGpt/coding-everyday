@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxDistance(vector<int>& colors) {
+        int ans=0;
+        int first=0;
+        int n=colors.size();
+        for(int i=1;i<n;i++){
+            if(colors[first]!=colors[i]){
+                ans=max(ans,i-first);
+            }
+        }
+        first=n-1;
+        for(int i=n-2;i>=0;i--){
+            if(colors[first]!=colors[i]){
+                ans=max(ans,first-i);
+            }
+        }
+        return ans;
+    }
+};
