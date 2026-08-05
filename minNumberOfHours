@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int minNumberOfHours(int initialEnergy, int initialExperience, vector<int>& energy, vector<int>& experience) {
+        int ans=0;
+        int sumEnergy=accumulate(energy.begin(),energy.end(),0);
+        if(initialEnergy<=sumEnergy){
+            ans+=sumEnergy-initialEnergy+1;
+        }
+        int currExp=initialExperience;
+        for(int exp:experience){
+            if(currExp <= exp){
+                int need = exp + 1 - currExp;
+                ans += need;
+                currExp += need;
+            }
+
+            currExp += exp;
+        }
+        return ans;
+    }
+};
