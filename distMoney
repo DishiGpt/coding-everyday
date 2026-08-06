@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int distMoney(int money, int children) {
+        if (money < children) return -1;
+        money -= children;
+        int ans = min(money / 7, children);
+        int leftover = money - ans * 7;   
+        int remain = children - ans;
+
+        if (remain == 0 && leftover > 0) ans--;
+        else if (remain == 1 && leftover == 3) ans--;
+
+        return ans;
+    }
+};
