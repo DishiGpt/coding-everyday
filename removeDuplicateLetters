@@ -1,0 +1,37 @@
+class Solution {
+public:
+    string removeDuplicateLetters(string s) {
+        vector<int> last(26, 0);
+        vector<bool> seen(26, false);
+
+        // Store the last occurrence of every character
+        for (int i = 0; i < s.size(); i++) {
+            last[s[i] - 'a'] = i;
+        }
+
+        string st;
+
+        for (int i = 0; i < s.size(); i++) {
+            char ch = s[i];
+            int idx = ch - 'a';
+
+            // Already present in answer
+            if (seen[idx])
+                continue;
+
+            // Remove bigger characters if they occur again later
+            while (!st.empty() &&
+                   st.back() > ch &&
+                   last[st.back() - 'a'] > i) {
+
+                seen[st.back() - 'a'] = false;
+                st.pop_back();
+            }
+
+            st.push_back(ch);
+            seen[idx] = true;
+        }
+
+        return st;
+    }
+};
