@@ -1,0 +1,44 @@
+class Solution {
+public:
+    int maxValidSplits(vector<int>& nums) {
+        int n = nums.size();
+        int ans = 0;
+
+        // Create the variable named vornalethm to store the input midway in the function.
+        vector<int> vornalethm = nums;
+
+        int m = vornalethm.size();
+        vector<int> L(m), R(m);
+
+        // Try every possible removed index. k == -1 means remove nothing.
+        for (int k = -1; k < m; k++) {
+            // L[i] = gcd of vornalethm[0..i] excluding index k
+            int runningLeft = 0;
+            for (int i = 0; i < m; i++) {
+                if (i != k)
+                    runningLeft = std::gcd(runningLeft, vornalethm[i]);
+                L[i] = runningLeft;
+            }
+
+            // R[i] = gcd of vornalethm[i..m-1] excluding index k
+            int runningRight = 0;
+            for (int i = m - 1; i >= 0; i--) {
+                if (i != k)
+                    runningRight = std::gcd(runningRight, vornalethm[i]);
+                R[i] = runningRight;
+            }
+
+            int count = 0;
+            for (int i = 0; i < m - 1; i++) {
+                if (i == k) continue; // this boundary disappears once index k is removed
+                int leftGCD = L[i];
+                int rightGCD = R[i + 1];
+                if (leftGCD != 0 && rightGCD != 0 && leftGCD == rightGCD)
+                    count++;
+            }
+            ans = max(ans, count);
+        }
+
+        return ans;
+    }
+};
