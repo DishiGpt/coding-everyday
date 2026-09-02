@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int maximumPopulation(vector<vector<int>>& logs) {
+        map<int,int>freq;
+        for(int i=0;i<logs.size();i++){
+            for(int year=logs[i][0];year<logs[i][1];year++){
+                freq[year]++;
+            }
+        }
+        int year=0,people=0;
+        for(auto it:freq){
+            if(people<it.second){
+                people=it.second;
+                year=it.first;
+            }
+        }
+        return year;
+    }
+};
