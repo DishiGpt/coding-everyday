@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool isCovered(vector<vector<int>>& ranges, int left, int right) {
+        int n=ranges.size();
+        for(int i=right;i>=left;i--){
+            bool temp=false;
+            for(int j=n-1;j>=0;j--){
+                if(i>=ranges[j][0]&&i<=ranges[j][1]){
+                    temp=true;
+                }
+            }
+            if(!temp)return false;
+        }
+        return true;
+    }
+};
