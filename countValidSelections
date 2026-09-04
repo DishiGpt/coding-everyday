@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int countValidSelections(vector<int>& nums) {
+        int n=nums.size();
+        vector<int>prefix(n);
+        vector<int>suffix(n);
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum+=nums[i];
+            prefix[i]=sum;
+        }
+        sum=0;
+        for(int i=n-1;i>=0;i--){
+            sum+=nums[i];
+            suffix[i]=sum;
+        }
+        int answer=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]==0){
+                int leftsum=0,rightsum=0;
+                if(i>0){
+                    leftsum=prefix[i-1];
+                }
+                if(i<n-1){
+                    rightsum=suffix[i+1];
+                }
+                if(leftsum==rightsum){
+                    answer+=2;
+                }
+                else if(abs(leftsum - rightsum) == 1){
+                    answer+=1;
+                }
+            }
+        }
+        return answer;
+
+    }
+};
