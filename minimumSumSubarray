@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int minimumSumSubarray(vector<int>& nums, int l, int r) {
+        int n=nums.size();
+        vector<int>prefix(n+1,0);
+        for(int i=1;i<=n;i++){
+            prefix[i]=prefix[i-1]+nums[i-1];
+        }
+        int ans=INT_MAX;
+        for(int i=0;i<n;i++){
+            for(int j=l;j<=r;j++){
+                if(i+j<=n){
+                    int temp=prefix[i+j]-prefix[i];
+                    if(temp>0){
+                        ans=min(ans,temp);
+                    }
+                }
+            }
+        }
+        if(ans==INT_MAX)return -1;
+        return ans;
+
+    }
+};
