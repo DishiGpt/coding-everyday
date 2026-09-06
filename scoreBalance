@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool scoreBalance(string s) {
+        int n=s.size();
+        vector<int>prefix(n);
+        vector<int>suffix(n);
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum+=s[i]-'a'+1;
+            prefix[i]=sum;
+        }
+        sum=0;
+        for(int i=n-1;i>=0;i--){
+            sum+=s[i]-'a'+1;
+            suffix[i]=sum;
+        }
+        for(int i=0;i<n-1;i++){
+            if(prefix[i]==suffix[i+1])return true;
+        }
+        return false;
+    }
+};
