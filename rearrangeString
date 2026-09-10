@@ -1,0 +1,30 @@
+class Solution {
+public:
+    string rearrangeString(string s, char x, char y) {
+        string result="";
+        int n=s.size();
+        unordered_map<char,int>freq;
+        for(int i=0;i<n;i++){
+            freq[s[i]]++;
+        }
+        if((freq.find(x)==freq.end()) || (freq.find(y)==freq.end()) )return s;
+        while(freq[y]!=0){
+            result+=y;
+            freq[y]--;
+        }
+        freq.erase(y);
+        for(auto p:freq){
+            if(p.first!=x){
+                while(p.second!=0){
+                    result+=p.first;
+                    p.second--;
+                }
+            }
+        }
+        while(freq[x]!=0){
+            result+=x;
+            freq[x]--;
+        }
+        return result;
+    }
+};
