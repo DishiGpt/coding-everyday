@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int maximumSwap(int num) {
+        string s = to_string(num);
+
+        // Store the last occurrence of each digit
+        int last[10];
+
+        for (int i = 0; i < s.size(); i++) {
+            last[s[i] - '0'] = i;
+        }
+
+        // Try to improve each digit from left to right
+        for (int i = 0; i < s.size(); i++) {
+            
+            // Check larger digits, from 9 down to current digit + 1
+            for (int d = 9; d > s[i] - '0'; d--) {
+                
+                // If a larger digit exists later
+                if (last[d] > i) {
+                    swap(s[i], s[last[d]]);
+                    return stoi(s);
+                }
+            }
+        }
+
+        return num;
+    }
+};
