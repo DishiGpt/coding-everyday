@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string strWithout3a3b(int a, int b) {
+        string res;
+        while (a > 0 || b > 0) {
+            int n = res.size();
+            bool writeA;
+            if (n >= 2 && res[n - 1] == res[n - 2]) {
+                // Last two chars identical -> forced to switch
+                writeA = (res[n - 1] == 'b');
+            } else {
+                writeA = (a >= b);
+            }
+
+            if (writeA) {
+                res += 'a';
+                --a;
+            } else {
+                res += 'b';
+                --b;
+            }
+        }
+        return res;
+    }
+};
