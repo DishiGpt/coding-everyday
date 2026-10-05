@@ -1,0 +1,56 @@
+class Solution {
+public:
+    bool win(vector<vector<char>>board, char p)
+{
+    // rows
+    for(int i = 0; i < 3; i++)
+    {
+        if(board[i][0] == p &&
+           board[i][1] == p &&
+           board[i][2] == p)
+            return true;
+    }
+
+    // columns
+    for(int i = 0; i < 3; i++)
+    {
+        if(board[0][i] == p &&
+           board[1][i] == p &&
+           board[2][i] == p)
+            return true;
+    }
+
+    // diagonal
+    if(board[0][0] == p &&
+       board[1][1] == p &&
+       board[2][2] == p)
+        return true;
+
+    // other diagonal
+    if(board[0][2] == p &&
+       board[1][1] == p &&
+       board[2][0] == p)
+        return true;
+
+    return false;
+}
+    string tictactoe(vector<vector<int>>& moves) {
+        int n=moves.size();
+        vector<vector<char>>board(3,vector<char>(3));
+        for(int i=0;i<n;i++){
+            int r=moves[i][0];
+            int c=moves[i][1];
+            if(i%2==0){
+                board[r][c]='X';
+            }
+            else{
+                board[r][c]='O';
+            }
+        }
+        if(win(board,'X'))return "A";
+        if(win(board,'O'))return "B";
+        if(n==9)return "Draw";
+        return "Pending";
+        
+    }
+};
