@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool canFormArray(vector<int>& arr, vector<vector<int>>& pieces) {
+        for(int i=0;i<pieces.size();i++){
+            auto start=find(arr.begin(),arr.end(),pieces[i][0]);
+            if(start==arr.end())return false;
+            else{
+                for(int j=1;j<pieces[i].size();j++){
+                    ++start;
+                    if((start==arr.end())||(pieces[i][j]!=*start))return false;
+            
+                }
+            }
+        }
+        return true;
+    }
+};
