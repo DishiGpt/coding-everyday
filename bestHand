@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string bestHand(vector<int>& ranks, vector<char>& suits) {
+        set<char>s;
+        for(char x:suits){
+            s.insert(x);
+        }
+        if(s.size()==1)return "Flush";
+        map<int,int>r;
+        for(int x:ranks){
+            r[x]++;
+        }
+        for(auto p:r){
+            if(p.second>=3){
+                return "Three of a Kind";
+            }
+        }
+        for(auto p:r){
+            if(p.second==2){
+                return "Pair";
+            }
+        }
+        return "High Card";
+    }
+};
