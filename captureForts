@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int captureForts(vector<int>& forts) {
+        int fort=0;
+        int latest=-1;
+        int n=forts.size();
+        for(int i=0;i<n;i++){
+            if(forts[i]!=0){
+                latest=i;break;
+            }
+        }
+        if(latest==-1)return 0;
+        for(int i=latest+1;i<n;i++){
+            if(forts[i]!=0){
+                if(forts[i]!=forts[latest]){
+                    fort=max(fort,abs(i-latest-1));
+                }
+                latest=i;
+            }
+        }
+        return fort;
+    }
+};
