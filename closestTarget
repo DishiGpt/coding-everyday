@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int closestTarget(vector<string>& words, string target, int startIndex) {
+        int n = words.size();
+        int minDistance = n;
+        bool found = false;
+
+        for (int i = 0; i < n; ++i) {
+            if (words[i] == target) {
+                found = true;
+                int directDiff = abs(i - startIndex);
+                // The shortest distance in a circular array is either the direct 
+                // index difference or the wrap-around distance (n - directDiff)
+                minDistance = min(minDistance, min(directDiff, n - directDiff));
+            }
+        }
+
+        return found ? minDistance : -1;
+    }
+};
