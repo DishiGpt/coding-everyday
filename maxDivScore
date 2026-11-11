@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int maxDivScore(vector<int>& nums, vector<int>& divisors) {
+        int n=divisors.size();
+        vector<int>div(n);
+        for(int i=0;i<nums.size();i++){
+            for(int j=0;j<n;j++){
+                if(nums[i]%divisors[j]==0){
+                    div[j]++;
+                }
+            }
+        }
+        int index=0,score=0;
+        for(int i=0;i<n;i++){
+            if(div[i]>score){
+                score=div[i];
+                index=i;
+            }
+            else if(div[i]==score){
+                int temp=divisors[index];
+                if(divisors[i]<temp){
+                    index=i;
+                }
+            }
+        }
+        return divisors[index];
+    }
+};
