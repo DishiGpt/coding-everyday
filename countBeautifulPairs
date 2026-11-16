@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int gcd(int first,int last){
+        if(last==0)return first;
+        return gcd(last,first%last);
+    }
+    int countBeautifulPairs(vector<int>& nums) {
+        int count=0;
+        int n=nums.size();
+        for(int i=0;i<n;i++){
+            string str=to_string(nums[i]);
+            int first=str[0]-'0';
+            for(int j=i+1;j<n;j++){
+                int last=nums[j]%10;
+                if(gcd(first,last)==1){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+};
