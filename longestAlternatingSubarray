@@ -1,0 +1,44 @@
+
+class Solution {
+public:
+    int longestAlternatingSubarray(vector<int>& nums, int threshold) {
+        int n = nums.size();
+        int l = 0;
+        int max_length = 0;
+
+        for(int r = 0; r < n; r++) {
+
+            // Current element cannot be part of a valid subarray
+            if(nums[r] > threshold) {
+                l = r + 1;
+                continue;
+            }
+
+            // Starting element must be even
+            if(l == r || nums[l] % 2 != 0) {
+                if(nums[r] % 2 == 0) {
+                    l = r;
+                }
+                else {
+                    l = r + 1;
+                }
+            }
+
+            // Check alternating parity
+            else if(nums[r] % 2 == nums[r-1] % 2) {
+                if(nums[r] % 2 == 0) {
+                    l = r;
+                }
+                else {
+                    l = r + 1;
+                }
+            }
+
+            if(l <= r) {
+                max_length = max(max_length, r - l + 1);
+            }
+        }
+
+        return max_length;
+    }
+};
