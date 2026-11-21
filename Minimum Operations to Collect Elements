@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums, int k) {
+        vector<int>vals(k+1,1);
+        int temp=k,count=0,n=nums.size()-1;
+        for(int i=n;i>=0;i--){
+            if((nums[i]>=1&&nums[i]<=k) && vals[nums[i]]==1){
+                vals[nums[i]]--;
+                temp--;
+            }
+            if(temp==0)break;
+            count++;
+        }
+        return count+1;
+    }
+};
