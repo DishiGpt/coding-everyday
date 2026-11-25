@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int minimumSum(vector<int>& nums) {
+        int sum=INT_MAX;
+        int n=nums.size();
+        for(int i=0;i<=n-3;i++){
+            for(int j=i+1;j<=n-2;j++){
+                for(int k=j+1;k<=n-1;k++){
+                    if(nums[j]>nums[i]&&nums[j]>nums[k]){
+                        sum=min(sum,(nums[i]+nums[j]+nums[k]));
+                    }
+                }
+            }
+        }
+        return (sum==INT_MAX)?-1:sum;
+    }
+};
